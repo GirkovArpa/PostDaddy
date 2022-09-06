@@ -38,6 +38,8 @@ $('#submit').on('click', async () => {
 
     if (method === 'GET') {
       delete options.body;
+    } else if (method === 'POST') {
+      options.body = objectToQueryString(parseForm(body)).slice(1);
     }
 
     const response = await fetch(url, options);
