@@ -1,0 +1,100 @@
+html {
+  overflow: hidden;
+}
+
+body {
+  margin: 0;
+  padding: 1em;
+  width: min-content;
+  height: min-content;
+  flow: vertical;
+  border-spacing: 1em;
+  background: rgb(250, 216, 241);
+  color: rgb(91, 30, 30);
+}
+
+[readonly] {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+div#contents {
+  flow: horizontal;
+  border-spacing: 1em;
+  width: 60em;
+}
+
+div.container {
+  flow: vertical;
+  border-spacing: 1em;
+  width: *;
+  height: *;
+}
+
+#title {
+  font-family: Calibri;
+  font-size: 2em;
+  width: *;
+  text-align: center;
+  font-weight: bold;
+}
+
+div.row {
+  flow: horizontal;
+  border-spacing: 1em;
+}
+
+label {
+  flow: vertical;
+  width: *;
+}
+
+label :first-child {
+  margin-top: 0.25em;
+}
+
+label[for=method] {
+  width: min-content;
+}
+
+#method {
+  width: 7em;
+}
+
+#method button {
+  width: 1em;
+}
+
+label[for=endpoint], #endpoint {
+  width: *;
+}
+
+option:hover {
+  background-color: highlight;
+}
+
+textarea {
+  height: 10em;
+  width: *;
+  overflow: auto;
+  padding: 0.25em;
+}
+
+button {
+  width: *;
+}
+
+.container:last-child {
+  height: *;
+}
+
+label[for=response] {
+  height: *;
+}
+
+#status {
+  width: *;
+}
+
+#response {
+  height: *;
+}

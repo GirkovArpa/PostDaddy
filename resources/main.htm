@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html window-resizable="false" window-icon="48.png">
+
+  <head>
+    <meta charset="utf-8" />
+    <title>PostDaddy</title>
+    <link href="main.css" rel="stylesheet" />
+    <script src="main.js" type="module"></script>
+  </head>
+  <include src="menu-bar.html" media="sciter" />
+  <body>
+    <div #contents>
+      <div .container>
+        <div .row>
+          <label for="method">Method:
+            <select #method>
+              <option value="GET">GET</option>
+              <option value="POST">POST</option>
+              <option value="OPTIONS">OPTIONS</option>
+              <option value="PUT">PUT</option>
+              <option value="DELETE">DELETE</option>
+              <option value="HEAD">HEAD</option>
+            </select>
+          </label>
+          <label for="endpoint">Endpoint:
+            <input #endpoint value="https://httpbin.org/get" />
+          </label>
+        </div>
+        <label for="headers">Headers:
+          <textarea #headers wrap="off">User-Agent: PostDaddy/0.1.0</textarea>
+        </label>
+        <label for="body">Body:
+          <textarea #body>foo: bar</textarea>
+        </label>
+        <button #submit>Submit</button>
+      </div>
+      <div .container>
+        <label for="status">Status:
+          <input #status readonly />
+        </label>
+        <label for="response">Response:
+          <textarea #response readonly></textarea>
+        </label>
+      </div>
+    </div>
+  </body>
+
+</html>
