@@ -26,18 +26,21 @@ $('#submit').on('click', async () => {
     const headers = $('#headers').value;
     const body = $('#body').value;
 
-    console.log({
-      endpoint,
+    const options = {
       method,
       headers: parseForm(headers),
       body: parseForm(body),
-    });
+    }
 
-    const response = await fetch(endpoint, {
-      method,
-      headers: parseForm(headers),
-      body: parseForm(body),
-    });
+    let url = method === 'GET'
+      ? endpoint + objectToQueryString(options.body)
+      : endpoint;
+
+    if (method === 'GET') {
+      delete options.body;
+    }
+
+    const response = await fetch(url, options);
 
     const statusCode = response.status;
     const statusText = response.statusText;
@@ -47,6 +50,7 @@ $('#submit').on('click', async () => {
     const text = await response.text();
     $('#response').innerHTML = text;
   } catch (e) {
+    console.log(e);
     Window.this.modal(<error caption="Error">Failed to fetch.</error>);
   }
 });
@@ -55,13 +59,21 @@ function parseForm(raw) {
   if (!raw.trim()) {
     return {};
   }
-  
+
   const entries = raw.split(/[\r\n]+/).map((line) => {
     const [key, ...values] = line.split(':');
     return [key.trim(), values.join(':').slice(1)];
   });
 
   return Object.fromEntries(entries);
+}
+
+function objectToQueryString(object) {
+  return '?' +
+    Object.keys(object).map((key) => {
+      return encodeURIComponent(key) + '=' +
+        encodeURIComponent(object[key]);
+    }).join('&');
 }
 
 $('[name=help-about]').on('click', () => Window.this.modal({ url: 'about.htm' }));
