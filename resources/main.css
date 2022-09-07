@@ -95,6 +95,10 @@ label[for=response] {
   width: *;
 }
 
+#headers, #body, #response {
+  font-family: monospace;
+}
+
 #response {
   height: *;
 }

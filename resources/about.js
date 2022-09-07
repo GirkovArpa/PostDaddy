@@ -26,7 +26,7 @@ export class About extends Element {
           <div id="header">
             <img src='about.png' width="256" height="144" />
             <div id="title">
-              <div>v0.1.2</div>
+              <div>v0.2.3</div>
             </div>
           </div>
           <div id="contents">

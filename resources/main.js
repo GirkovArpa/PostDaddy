@@ -42,6 +42,8 @@ $('#submit').on('click', async () => {
       options.body = objectToQueryString(parseForm(body)).slice(1);
     }
 
+    options.cache = 'no-cache';
+
     const response = await fetch(url, options);
 
     const statusCode = response.status;
